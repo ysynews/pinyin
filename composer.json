@@ -1,0 +1,27 @@
+{
+  "name": "smframe/pinyin",
+  "description": "phpºº×Ö×ªÆ´Òô´øÒôµ÷",
+  "keywords": [
+    "pinyin",
+    "php",
+    "ºº×Ö",
+    "Æ´Òô",
+    "Òôµ÷"
+  ],
+  "authors": [
+    {
+      "name": "FH",
+      "email": "ysynews@163.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "pinyin\\": "src/"
+    }
+  }
+}
