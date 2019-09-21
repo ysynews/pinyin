@@ -6,7 +6,7 @@
 namespace pinyin;
 
 class Pinyin{
-	
+    protected static $instance;
 	//utf-8中国汉字集合
 	private $ChineseCharacters;
 	//编码
@@ -14,8 +14,21 @@ class Pinyin{
 	
 	public function __construct(){
 		if( empty($this->ChineseCharacters) ){
-		  $this->ChineseCharacters = file_get_contents('ChineseCharacters.dat');	
+		  $this->ChineseCharacters = file_get_contents(__DIR__.'/ChineseCharacters.dat');	
 		}
+	}
+	
+	/**
+	 * @初始化
+	 * @access public
+	 * @param array $options 参数
+	 */
+	public static function instance()
+	{
+	    if (is_null(self::$instance)) {
+	        self::$instance = new static();
+	    }
+	    return self::$instance;
 	}
 	
 	/*
@@ -46,7 +59,7 @@ class Pinyin{
 	* param $delimiter  String   转换之后拼音之间分隔符
 	* param $outside_ignore  Boolean     是否忽略非汉字内容
 	*/	
-	public function TransformWithoutTone($input_char,$delimiter='',$outside_ignore=true){
+	public function TransformWithoutTone($input_char,$delimiter=' ',$outside_ignore=true){
 		
 		$char_with_tone = $this->TransformWithTone($input_char,$delimiter,$outside_ignore);
 		
